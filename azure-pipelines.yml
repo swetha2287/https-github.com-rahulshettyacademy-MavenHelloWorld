@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+- task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
@@ -22,7 +22,8 @@ steps:
     goals: 'package'
 - task: CopyFiles@2
   inputs:
-    Contents: '**/.war'
+   
+    Contents: '**/*.war'
     TargetFolder: '$(build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
